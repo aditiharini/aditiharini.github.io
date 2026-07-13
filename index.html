@@ -1,1 +1,81 @@
-Hello World
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>aditi srinivasan</title>
+    <meta
+      name="description"
+      content="Software engineer. Interested in enabling human productivity via AI, building in the physical world, learning about how models work."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5f2ea'/%3E%3Ccircle cx='32' cy='21' r='6' fill='%2328251e'/%3E%3Crect x='29' y='32' width='6' height='15' rx='3' fill='%232f7d5c'/%3E%3Ccircle cx='32' cy='51' r='4' fill='%23b8b09d'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell" aria-label="Aditi Srinivasan timeline">
+      <header class="site-header" data-animate data-delay="1">
+        <h1>aditi srinivasan</h1>
+        <div class="intro">
+          <img
+            class="profile-photo"
+            src="assets/profile-photo.jpg"
+            alt="Aditi with Kaju"
+            width="116"
+            height="108"
+          />
+          <p>
+            Software engineer. Interested in enabling human productivity via AI,
+            building in the physical world, learning about how models work.
+          </p>
+        </div>
+      </header>
+
+      <section
+        class="timeline"
+        aria-label="Life log, newest first"
+        data-animate
+        data-delay="2"
+      >
+        <div id="timelineLine" class="timeline-line" aria-hidden="true"></div>
+        <div
+          id="timelineMarker"
+          class="timeline-marker"
+          aria-hidden="true"
+        ></div>
+        <div id="timelineEntries" class="timeline-entries"></div>
+      </section>
+
+      <footer class="site-footer" data-animate data-delay="3">
+        <span class="contact-links">
+          <a id="emailLink" class="sweep-link" href="mailto:aditiharini@gmail.com">email</a>
+          ·
+          <a id="githubLink" class="sweep-link" href="https://github.com/aditiharini">github</a>
+          ·
+          <a
+            id="linkedinLink"
+            class="sweep-link"
+            href="https://www.linkedin.com/in/aditi-srinivasan-403076137"
+          >linkedin</a>
+        </span>
+      </footer>
+    </main>
+
+    <noscript>
+      <p class="noscript">
+        This site needs JavaScript for the timeline navigation.
+      </p>
+    </noscript>
+
+    <script type="module" src="assets/app.js"></script>
+  </body>
+</html>

@@ -10,7 +10,8 @@ Most text lives in `assets/site-data.js`:
 - `links` controls the footer and palette actions.
 - `parts` lets a row mix plain text, emphasized text, and external links.
 
-The intro paragraph lives in `index.html`.
+The intro paragraph lives in `index.html`. Inline essays live in
+`assets/writings.js` and are attached to writing entries in `timelineEntries`.
 
 ## Local preview
 

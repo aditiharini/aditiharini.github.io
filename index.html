@@ -7,7 +7,7 @@
     <title>aditi srinivasan</title>
     <meta
       name="description"
-      content="Software engineer. Interested in enabling human productivity via AI, building in the physical world, learning about how models work."
+      content="Software engineer. Continually learning™, always looking for new challenges. Interested in AI x physical world."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,25 +34,50 @@
             height="108"
           />
           <p>
-            Software engineer. Interested in enabling human productivity via AI,
-            building in the physical world, learning about how models work.
+            Software engineer. Continually learning™, always looking for new
+            challenges. Interested in AI x physical world.
           </p>
         </div>
       </header>
 
       <section
-        class="timeline"
+        class="timeline-section"
         aria-label="Life log, newest first"
         data-animate
         data-delay="2"
       >
-        <div id="timelineLine" class="timeline-line" aria-hidden="true"></div>
-        <div
-          id="timelineMarker"
-          class="timeline-marker"
-          aria-hidden="true"
-        ></div>
-        <div id="timelineEntries" class="timeline-entries"></div>
+        <div class="timeline-filters" role="group" aria-label="Filter timeline">
+          <button
+            class="timeline-filter"
+            type="button"
+            data-timeline-filter="all"
+            aria-pressed="true"
+          >all</button>
+          <span aria-hidden="true">*</span>
+          <button
+            class="timeline-filter"
+            type="button"
+            data-timeline-filter="timeline"
+            aria-pressed="false"
+          >timeline</button>
+          <span aria-hidden="true">*</span>
+          <button
+            class="timeline-filter"
+            type="button"
+            data-timeline-filter="writing"
+            aria-pressed="false"
+          >writing</button>
+        </div>
+
+        <div class="timeline">
+          <div id="timelineLine" class="timeline-line" aria-hidden="true"></div>
+          <div
+            id="timelineMarker"
+            class="timeline-marker"
+            aria-hidden="true"
+          ></div>
+          <div id="timelineEntries" class="timeline-entries"></div>
+        </div>
       </section>
 
       <footer class="site-footer" data-animate data-delay="3">

@@ -1,6 +1,7 @@
 import { links, timelineEntries } from "./site-data.js";
 
 const state = {
+  filter: "all",
   selectedIndex: -1,
   scrollGuardUntil: 0,
   scrollRaf: 0,
@@ -9,13 +10,18 @@ const state = {
 const timelineEntriesElement = document.getElementById("timelineEntries");
 const timelineMarker = document.getElementById("timelineMarker");
 const timelineLine = document.getElementById("timelineLine");
+const timelineFilterButtons = [...document.querySelectorAll("[data-timeline-filter]")];
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function getEntryElements() {
+function getAllEntryElements() {
   return [...timelineEntriesElement.querySelectorAll(".timeline-entry")];
+}
+
+function getEntryElements() {
+  return getAllEntryElements().filter((entry) => !entry.hidden);
 }
 
 function setFooterLinks() {
@@ -33,8 +39,14 @@ function setFooterLinks() {
   }
 }
 
-function appendEntryPart(parent, part) {
-  const node = part.href ? document.createElement("a") : document.createElement("span");
+function setWritingExpanded(toggle, panel, expanded) {
+  toggle.setAttribute("aria-expanded", String(expanded));
+  panel.hidden = !expanded;
+  updateMarker();
+}
+
+function appendEntryPart(parent, part, writingPanel) {
+  const node = document.createElement(part.writingToggle ? "button" : part.href ? "a" : "span");
   node.textContent = part.text;
 
   if (part.emphasis) {
@@ -52,7 +64,70 @@ function appendEntryPart(parent, part) {
     node.classList.add("entry-link");
   }
 
+  if (part.writingToggle) {
+    node.type = "button";
+    node.classList.add("entry-link", "writing-toggle");
+    node.setAttribute("aria-controls", writingPanel.id);
+    node.setAttribute("aria-expanded", "false");
+    node.addEventListener("click", () => {
+      const titleTop = node.getBoundingClientRect().top;
+      const expanded = node.getAttribute("aria-expanded") === "true";
+      setWritingExpanded(node, writingPanel, !expanded);
+
+      const restoreTitlePosition = () => {
+        window.scrollBy(0, node.getBoundingClientRect().top - titleTop);
+      };
+      restoreTitlePosition();
+      requestAnimationFrame(restoreTitlePosition);
+    });
+
+    writingPanel.querySelector(".writing-collapse").addEventListener("click", () => {
+      setWritingExpanded(node, writingPanel, false);
+      node.focus();
+    });
+  }
+
   parent.append(node);
+}
+
+function renderWritingContent(writing, index) {
+  const panel = document.createElement("div");
+  panel.id = `writing-${index}`;
+  panel.className = "inline-writing";
+  panel.hidden = true;
+  panel.setAttribute("role", "region");
+  panel.setAttribute("aria-label", writing.title);
+
+  for (const block of writing.blocks) {
+    if (block.type === "principle") {
+      const principle = document.createElement("p");
+      principle.className = "inline-writing-principle";
+      principle.textContent = block.text;
+      panel.append(principle);
+      continue;
+    }
+
+    const section = document.createElement("section");
+    const heading = document.createElement("h2");
+    heading.textContent = `Case study: ${block.title}`;
+    section.append(heading);
+
+    for (const text of block.paragraphs) {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      section.append(paragraph);
+    }
+
+    panel.append(section);
+  }
+
+  const collapse = document.createElement("button");
+  collapse.className = "writing-collapse";
+  collapse.type = "button";
+  collapse.textContent = "collapse ↑";
+  panel.append(collapse);
+
+  return panel;
 }
 
 function renderTimeline() {
@@ -61,6 +136,7 @@ function renderTimeline() {
   timelineEntries.forEach((entry, index) => {
     const row = document.createElement("article");
     row.className = "timeline-entry";
+    row.dataset.category = entry.category ?? "timeline";
     row.dataset.entry = String(index);
 
     const icon = document.createElement("span");
@@ -68,9 +144,13 @@ function renderTimeline() {
     icon.textContent = entry.icon;
     icon.setAttribute("aria-hidden", "true");
 
+    const content = document.createElement("div");
+    content.className = "timeline-entry-content";
+    const writingPanel = entry.writing ? renderWritingContent(entry.writing, index) : null;
+
     const text = document.createElement("p");
     for (const part of entry.parts) {
-      appendEntryPart(text, part);
+      appendEntryPart(text, part, writingPanel);
     }
     text.append(" ");
 
@@ -79,7 +159,12 @@ function renderTimeline() {
     date.textContent = entry.date;
     text.append(date);
 
-    row.append(icon, text);
+    content.append(text);
+    if (writingPanel) {
+      content.append(writingPanel);
+    }
+
+    row.append(icon, content);
     fragment.append(row);
   });
 
@@ -103,8 +188,10 @@ function updateMarker() {
 }
 
 function updateSelection() {
-  getEntryElements().forEach((entry, index) => {
-    const selected = index === state.selectedIndex;
+  const selectedEntry = getEntryElements()[state.selectedIndex];
+
+  getAllEntryElements().forEach((entry) => {
+    const selected = entry === selectedEntry;
     entry.classList.toggle("is-selected", selected);
     if (selected) {
       entry.setAttribute("aria-current", "true");
@@ -130,7 +217,8 @@ function maybeScrollEntryIntoView(entry) {
 }
 
 function setSelectedIndex(index, source = "keyboard") {
-  state.selectedIndex = clamp(index, -1, timelineEntries.length - 1);
+  const entries = getEntryElements();
+  state.selectedIndex = clamp(index, -1, entries.length - 1);
   updateSelection();
   updateMarker();
 
@@ -138,9 +226,29 @@ function setSelectedIndex(index, source = "keyboard") {
     return;
   }
 
-  const entry = getEntryElements()[state.selectedIndex];
+  const entry = entries[state.selectedIndex];
   if (entry) {
     maybeScrollEntryIntoView(entry);
+  }
+}
+
+function setTimelineFilter(filter) {
+  state.filter = filter;
+
+  for (const button of timelineFilterButtons) {
+    button.setAttribute("aria-pressed", String(button.dataset.timelineFilter === filter));
+  }
+
+  for (const entry of getAllEntryElements()) {
+    entry.hidden = filter !== "all" && entry.dataset.category !== filter;
+  }
+
+  state.selectedIndex = -1;
+  updateSelection();
+  updateMarker();
+
+  if (getEntryElements().length) {
+    setSelectedIndex(0);
   }
 }
 
@@ -232,6 +340,9 @@ function handleKeyboardNavigation(event) {
 
 function bindEvents() {
   document.addEventListener("keydown", handleKeyboardNavigation);
+  for (const button of timelineFilterButtons) {
+    button.addEventListener("click", () => setTimelineFilter(button.dataset.timelineFilter));
+  }
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", () => {
     updateMarker();

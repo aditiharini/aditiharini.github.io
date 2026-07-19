@@ -1,3 +1,5 @@
+import { dogTrainingEssay } from "./writings.js";
+
 export const links = {
   email: "mailto:aditiharini@gmail.com",
   github: "https://github.com/aditiharini",
@@ -5,6 +7,20 @@ export const links = {
 };
 
 export const timelineEntries = [
+  {
+    icon: "✍️",
+    date: "jul '26",
+    category: "writing",
+    parts: [
+      { text: "Wrote " },
+      {
+        text: dogTrainingEssay.title,
+        writingToggle: true,
+      },
+      { text: ". " },
+    ],
+    writing: dogTrainingEssay,
+  },
   {
     icon: "🔧",
     date: "jul '26",

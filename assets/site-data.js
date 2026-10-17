@@ -1,4 +1,4 @@
-import { dogTrainingEssay } from "./writings.js";
+import { dogTrainingEssay, skincareEssay } from "./writings.js";
 
 export const links = {
   email: "mailto:aditiharini@gmail.com",
@@ -7,6 +7,20 @@ export const links = {
 };
 
 export const timelineEntries = [
+  {
+    icon: "💧",
+    date: "oct '26",
+    category: "writing",
+    parts: [
+      { text: "Wrote " },
+      {
+        text: skincareEssay.title,
+        writingToggle: true,
+      },
+      { text: ". " },
+    ],
+    writing: skincareEssay,
+  },
   {
     icon: "✍️",
     date: "jul '26",

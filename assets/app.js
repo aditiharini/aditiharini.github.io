@@ -90,6 +90,55 @@ function appendEntryPart(parent, part, writingPanel) {
   parent.append(node);
 }
 
+function renderProductList(products) {
+  const list = document.createElement("ul");
+  list.className = "product-list";
+  list.setAttribute("role", "list");
+
+  for (const product of products) {
+    const item = document.createElement("li");
+    const card = document.createElement(product.href ? "a" : "div");
+    card.className = "product-card";
+
+    if (product.href) {
+      card.href = product.href;
+      card.target = "_blank";
+      card.rel = "noopener noreferrer";
+    } else {
+      card.classList.add("product-card-empty");
+    }
+
+    if (product.image) {
+      const image = document.createElement("img");
+      image.className = "product-image";
+      image.src = product.image;
+      image.alt = "";
+      image.width = 68;
+      image.height = 68;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.referrerPolicy = "no-referrer";
+      card.append(image);
+    } else {
+      const icon = document.createElement("span");
+      icon.className = "product-image";
+      icon.textContent = product.icon ?? "";
+      icon.setAttribute("aria-hidden", "true");
+      card.append(icon);
+    }
+
+    const name = document.createElement("span");
+    name.className = "product-name";
+    name.textContent = product.name;
+    card.append(name);
+
+    item.append(card);
+    list.append(item);
+  }
+
+  return list;
+}
+
 function renderWritingContent(writing, index) {
   const panel = document.createElement("div");
   panel.id = `writing-${index}`;
@@ -99,18 +148,24 @@ function renderWritingContent(writing, index) {
   panel.setAttribute("aria-label", writing.title);
 
   for (const block of writing.blocks) {
-    if (block.type === "principle") {
-      const principle = document.createElement("p");
-      principle.className = "inline-writing-principle";
-      principle.textContent = block.text;
-      panel.append(principle);
+    if (block.type === "principle" || block.type === "paragraph") {
+      const paragraph = document.createElement("p");
+      if (block.type === "principle") {
+        paragraph.className = "inline-writing-principle";
+      }
+      paragraph.textContent = block.text;
+      panel.append(paragraph);
       continue;
     }
 
     const section = document.createElement("section");
     const heading = document.createElement("h2");
-    heading.textContent = `Case study: ${block.title}`;
+    heading.textContent = block.type === "case-study" ? `Case study: ${block.title}` : block.title;
     section.append(heading);
+
+    if (block.products) {
+      section.append(renderProductList(block.products));
+    }
 
     for (const text of block.paragraphs) {
       const paragraph = document.createElement("p");

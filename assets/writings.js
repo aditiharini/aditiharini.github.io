@@ -50,3 +50,112 @@ export const dogTrainingEssay = {
     },
   ],
 };
+
+export const skincareEssay = {
+  title: "My journey to minimalist skincare",
+  blocks: [
+    {
+      type: "paragraph",
+      text: "Dealing with skin issues has always been super frustrating for me. Whenever I have breakouts, I’m constantly on the lookout for correlations– Did what I eat ruin my skin? Did my sweat ruin my skin? Did my pillow ruin my skin? It’s hard for me to enjoy day to day activities because I’m worried that whatever I do will hurt my skin. I have an obsessive streak and the skin issues really bring it out in the worst way.",
+    },
+    {
+      type: "paragraph",
+      text: "Here’s my skincare journey",
+    },
+    {
+      type: "section",
+      title: "High school",
+      products: [
+        {
+          name: "Neutrogena Naturals Purifying Facial Cleanser",
+          href: "https://www.neutrogena.com/products/skincare/neutrogena-naturals-purifying-facial-cleanser/6802517",
+          image:
+            "https://images.ctfassets.net/3zfcttr0ztpr/1TN6fXqwM0mWo1CHk5B9E/42a39be197bdb1a1222afa9ac0c3086b/6802517_nocolor_0.avif?w=200&fm=webp",
+        },
+      ],
+      paragraphs: [
+        "This was the staple of my teenage years. I used this daily with very little moisturizing after (I might have used body cream). Honestly my acne in my teenage years wasn’t too bad. It was on and off and much different in nature than the acne I get today. I got a lot more smaller bumps in areas like my forehead and it wouldn’t leave a lot of scarring.",
+      ],
+    },
+    {
+      type: "section",
+      title: "College",
+      products: [
+        {
+          name: "Neutrogena Hydro Boost Water Cream",
+          href: "https://www.neutrogena.com/products/skincare/neutrogena-hydro-boost-water-cream-fragrance-free/6806486",
+          image:
+            "https://images.ctfassets.net/3zfcttr0ztpr/4eAtqxGo64j3pXpNzsjvV9/4ec586ab5af7370717dd411a01ca6a74/6806486-Carousel_01-Neutrogena?w=200&fm=webp",
+        },
+        {
+          name: "Neutrogena Oil-Free Acne Stress Control Power-Clear Scrub",
+          href: "https://www.neutrogena.com/products/skincare/oil-free-acne-stress-control-power-clear-scrub/6805325",
+          image:
+            "https://images.ctfassets.net/3zfcttr0ztpr/3in1J2YnUeSv44xeVYIT4/572243277a6a3941679f44e645dc0d09/6805325-MAIN-1021-min?w=200&fm=webp",
+        },
+        {
+          name: "Aveeno Calm + Restore Oat Gel Moisturizer",
+          href: "https://www.aveeno.com/products/calm-restore-oat-gel-moisturizer-sensitive-skin",
+          image:
+            "https://images.ctfassets.net/j7jv1vcgqjb4/6K6lC4Dwg64DAbYjnlDTph/ccc470d2f52b1eac654c4c973da45923/7oz_oobwb-min-en-us-Aveeno?w=200&fm=webp",
+        },
+      ],
+      paragraphs: [
+        "I rotated through the products above and some others during my college years and my skin was really at its worst. I’d get these large pimples all over my cheeks that would leave scars and bleed as they healed and none of the products I used worked.",
+      ],
+    },
+    {
+      type: "section",
+      title: "Covid",
+      products: [{ name: "No products", icon: "💧" }],
+      paragraphs: [
+        "I used absolutely nothing outside of water to rinse my face and my skin recovered completely over the course of a year. This was the only thing that worked for me in many years and gave me a lot of insight into how to treat my skin. My theory is that the lack of products along with the lack of exposure to the world allowed my skin barrier to recover in a stress-free environment.",
+      ],
+    },
+    {
+      type: "section",
+      title: "Mid 20s",
+      products: [
+        {
+          name: "CeraVe Resurfacing Retinol Serum",
+          href: "https://www.cerave.com/skincare/facial-serums/resurfacing-retinol-serum",
+          image:
+            "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/serums/resurfacing-retinol-serum/cerave_resurfacing_retinol-serum-pump-700x700-v1.jpg?rev=b943cbf81120424f869b26fe971dbf45&w=200",
+        },
+        {
+          name: "CeraVe Acne Foaming Cream Cleanser (4% Benzoyl Peroxide)",
+          href: "https://www.cerave.com/skincare/cleansers/acne-benzoyl-peroxide-cleanser",
+          image:
+            "https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/us/skincare/cleansers/acne-pdp-resizes/foaming-cleanser/acne-foaming-cleanser-tube-packshot-700x785-v1.jpg?rev=a5e2960fd1bf4bceb9a3f31d44fa740f",
+        },
+        {
+          name: "La Roche-Posay Effaclar Medicated Gel Cleanser",
+          href: "https://www.laroche-posay.us/our-products/face/acne-products/effaclar-medicated-acne-face-wash-effaclaracnewash.html",
+          image: "https://media.ulta.com/i/ulta/2609330?w=200&h=200",
+        },
+      ],
+      paragraphs: [
+        "My skin was stable for periods of time but really flared up at other times as I lived in NYC. I tried to refrain from products based on my COVID learnings, but after a while I just couldn’t resist the urge to do something. I got more aggressive with my product choices with age and wisdom. I read up on things and discovered trendy chemicals like retinol(I know it’s vitamin A) and benzoyl peroxide. I felt like I was pursuing the “scientific path” but again… nothing worked.",
+      ],
+    },
+    {
+      type: "section",
+      title: "Now",
+      products: [
+        {
+          name: "Mediheal Madecassoside Blemish Pad",
+          href: "https://mediheal.com/products/madecassoside-blemish-pad",
+          image:
+            "https://mediheal.com/cdn/shop/files/thumbnail_Madecassoside-Pad_clean_1_26ee8997-4747-4e11-b41b-d7da5b9741c7.png?v=1787062850&width=200",
+        },
+      ],
+      paragraphs: [
+        "I started using these at the peak of my acne with no other products as a hail mary. I’d wash my face, apply the toner pad, and do nothing else (no moisturizer or cleanser) twice a day. With a few weeks of consistency my acne healed and I wasn’t getting new pimples. By this time I’d learned not to declare victory too early so I reserved judgement on the efficacy of the routine for several months. I’m happy to say that at this point, my skin has been stable and acne free for around a year and a half.",
+      ],
+    },
+    {
+      type: "paragraph",
+      text: "It’s always hard to debug skin problems because there are a lot of confounding factors. Diet, stress, menstrual cycle, products, weather all matter and it’s not easy to isolate the impact of one from all the others. My personal experience has been less is more when it comes to skincare products-- a splash of water and a clean towel has worked better for me than any $100/month skincare routine I’ve tried.",
+    },
+  ],
+};

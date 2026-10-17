@@ -22,7 +22,7 @@ export const timelineEntries = [
     writing: skincareEssay,
   },
   {
-    icon: "✍️",
+    icon: "🦮",
     date: "jul '26",
     category: "writing",
     parts: [

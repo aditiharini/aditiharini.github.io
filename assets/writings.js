@@ -159,3 +159,47 @@ export const skincareEssay = {
     },
   ],
 };
+
+export const dogfluencerEssay = {
+  title: "A week in the life of a wannabe dogfluencer",
+  blocks: [
+    {
+      type: "paragraph",
+      text: "I’ve become obsessed with the idea of side hustling as a dog trainer and on the path to that I’ve decided that I need to take off as a dogfluencer. Here’s what I’ve done and what I’ve learned so far",
+    },
+    {
+      type: "section",
+      title: "Trying to sell myself as a dog trainer",
+      paragraphs: [
+        "I started LARPing as a business owner immediately. I kicked off a grassroots marketing campaign, made a flyer (thx Claude), sent it to as many SF friends as I could think of, validated my pricing with market research, and I started imagining myself going out to visit my first clients.",
+        "After 48 hours of waiting I got 0 new clients…",
+        "The dog services industry is pretty unregulated and all based on word of mouth and vibes. I realized I needed to build a community around dogs and a platform to advertise myself.",
+      ],
+    },
+    {
+      type: "section",
+      title: "Building a community",
+      paragraphs: [
+        "In sending out my marketing feelers, I’ve found some new dog-based friends and I sought to deepen those connections. I’ve made friends with Lisa, who has given me great advice on building a dog services business. I love talking to her. She runs a pomsky breeding business and she’s built up a sizable social media following herself. I’ve made friends with Hala, who helped me think through my pricing strategy.",
+        "Women support women. I don’t like to make generalizations based on gender, but I have observed in my own life time and time again that it’s so much easier to ask for and receive help from women (there are exceptions ofc).",
+      ],
+    },
+    {
+      type: "section",
+      title: "Building a platform",
+      paragraphs: [
+        [
+          { text: "This is where my dogfluencing play comes in. I took " },
+          { text: "Kaju’s account", href: "https://www.instagram.com/kaju.the.nut/" },
+          {
+            text: " public and started posting regularly. I’ve been posting regularly for 3 days now, but it feels like weeks. I’ve started learning how to edit videos. I’ve done all my videos on my phone using the Edits app (made by Instagram). I’m starting to learn how to be funny in my videos, how to cut clips and stitch them together, what sorts of fonts attract attention when I overlay text on my videos, how to pick music that matches the vibes of my video. I’m thinking about how much to feature myself vs Kaju, how to capture better videos (I’m so bad with lighting). I also have a constant running list of possible video ideas.",
+          },
+        ],
+      ],
+    },
+    {
+      type: "paragraph",
+      text: "I’m all in on this.. and the best part is that this whole endeavor is METRICS DRIVEN. I love numbers, always have. They stick in my head. I’ve spent all day staring at my metrics and asking all the AIs what I can do to improve. Let’s see how this all goes.",
+    },
+  ],
+};

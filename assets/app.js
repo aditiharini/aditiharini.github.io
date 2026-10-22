@@ -139,6 +139,16 @@ function renderProductList(products) {
   return list;
 }
 
+function setParagraphContent(paragraph, content) {
+  if (Array.isArray(content)) {
+    for (const part of content) {
+      appendEntryPart(paragraph, part);
+    }
+  } else {
+    paragraph.textContent = content;
+  }
+}
+
 function renderWritingContent(writing, index) {
   const panel = document.createElement("div");
   panel.id = `writing-${index}`;
@@ -153,7 +163,7 @@ function renderWritingContent(writing, index) {
       if (block.type === "principle") {
         paragraph.className = "inline-writing-principle";
       }
-      paragraph.textContent = block.text;
+      setParagraphContent(paragraph, block.text);
       panel.append(paragraph);
       continue;
     }
@@ -169,7 +179,7 @@ function renderWritingContent(writing, index) {
 
     for (const text of block.paragraphs) {
       const paragraph = document.createElement("p");
-      paragraph.textContent = text;
+      setParagraphContent(paragraph, text);
       section.append(paragraph);
     }
 
